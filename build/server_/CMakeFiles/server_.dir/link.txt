@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/server_.dir/src/server.cpp.o -o server_  ../thread_/libthread_.a 

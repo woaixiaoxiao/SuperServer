@@ -1,2 +1,0 @@
-/usr/bin/ar qc libthread_.a CMakeFiles/thread_.dir/src/test1.cpp.o
-/usr/bin/ranlib libthread_.a

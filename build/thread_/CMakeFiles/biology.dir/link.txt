@@ -1,2 +1,0 @@
-/usr/bin/ar qc libbiology.a CMakeFiles/biology.dir/src/test1.cpp.o
-/usr/bin/ranlib libbiology.a
