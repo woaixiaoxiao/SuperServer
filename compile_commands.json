@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/dcao/webserver/myServer/build/thread_",
+  "command": "/usr/bin/g++  -I/home/dcao/webserver/myServer/thread_/include -g -std=c++17 -o CMakeFiles/thread_.dir/src/test1.cpp.o -c /home/dcao/webserver/myServer/thread_/src/test1.cpp",
+  "file": "/home/dcao/webserver/myServer/thread_/src/test1.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/server_",
+  "command": "/usr/bin/g++  -I/home/dcao/webserver/myServer/server_/include -I/home/dcao/webserver/myServer/thread_/include -g -std=c++17 -o CMakeFiles/server_.dir/src/server.cpp.o -c /home/dcao/webserver/myServer/server_/src/server.cpp",
+  "file": "/home/dcao/webserver/myServer/server_/src/server.cpp"
+}
+]
