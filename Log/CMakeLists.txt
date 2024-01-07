@@ -1,0 +1,6 @@
+file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp include/*.h)
+add_library(Log STATIC ${srcs})
+target_include_directories(Log PUBLIC include)
+find_package(glog REQUIRED)
+target_link_libraries(Log PUBLIC glog::glog)
+target_link_libraries(Log PUBLIC Buffer)

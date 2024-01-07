@@ -8,6 +8,7 @@ find_package(glog REQUIRED)
 set(MY_LIBRARIES
     Thread
     Buffer
+    Log
     glog::glog
     # Serverlib
 )

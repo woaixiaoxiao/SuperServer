@@ -1,8 +1,3 @@
-/*
- * @Author       : mark
- * @Date         : 2020-06-26
- * @copyleft Apache 2.0
- */
 #include "Buffer/buffer.hpp"
 
 Buffer::Buffer(int initBuffSize) : buffer_(initBuffSize), readPos_(0), writePos_(0) {
@@ -36,7 +31,7 @@ void Buffer::RetrieveUntil(const char *end) {
     Retrieve(end - Peek());
 }
 
-// 将所有东西都取完
+// 设置标志位，代表将所有东西都取完
 void Buffer::RetrieveAll() {
     bzero(&buffer_[0], buffer_.size());
     readPos_ = 0;

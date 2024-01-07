@@ -1,19 +1,16 @@
+
 #ifndef BUFFER_H
 #define BUFFER_H
-
 #include <cstring>
 #include <iostream>
-#include <unistd.h> 
+#include <unistd.h>
 #include <sys/uio.h>
-#include <vector> 
+#include <vector>
 #include <atomic>
 #include <assert.h>
 // 这个Buffer类就是将char存放在了vector中，这样可以方便地实现原地扩容
 // 但是在具体使用时，是配合read和write的index和首个char字符的地址得到char*来使用的
 // 可以说结合了vector和传统数组的用法
-
-// 使用方法，可以通过Append将数据传入Buffer，也可以通过ReadFd将数据从fd读入Buffer
-// 通过WriteFd将数据从Buffer中写到fd中
 class Buffer {
 public:
     Buffer(int initBuffSize = 1024);
@@ -53,6 +50,5 @@ private:
     std::atomic<std::size_t> readPos_;
     std::atomic<std::size_t> writePos_;
 };
-
 
 #endif

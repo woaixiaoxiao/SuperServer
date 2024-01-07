@@ -14,5 +14,6 @@ enable_testing()
 add_subdirectory(Server)
 add_subdirectory(Thread)
 add_subdirectory(Buffer)
+add_subdirectory(Log)
 
 add_subdirectory(Test)
