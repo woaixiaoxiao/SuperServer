@@ -7,6 +7,7 @@ find_package(glog REQUIRED)
 # 获得该项目的各种模块，包括thread，memory等，以及glog
 set(MY_LIBRARIES
     Thread
+    Buffer
     glog::glog
     # Serverlib
 )

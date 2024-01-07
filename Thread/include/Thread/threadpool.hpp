@@ -1,3 +1,6 @@
+
+#ifndef THREADPOOL_H
+#define THREADPOOL_H
 #include <mutex>
 #include <condition_variable>
 #include <queue>
@@ -71,3 +74,5 @@ private:
     };
     std::shared_ptr<Pool> pool_;
 };
+
+#endif
