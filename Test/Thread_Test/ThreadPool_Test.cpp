@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "glog/logging.h"
-#include "Thread/threadpool.hpp"
+#include "Pool/threadpool.hpp"
 // #include <Thread/test1.hpp>
 
 // 测试基本功能，四种函数类型

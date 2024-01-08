@@ -115,7 +115,7 @@ void Log::write(int level, const char *format, ...) {
         fp_ = fopen(newFile, "a");
         assert(fp_ != nullptr);
     }
-    // 根据可变参数列表构造要写的字符串，放入Buffer中，然后一次性读到Queue中
+    // 根据可变参数列表构造要写的字符串（格式化字符串），放入Buffer中，然后一次性读到Queue中
     {
         unique_lock<mutex> locker(mtx_);
         lineCount_++;

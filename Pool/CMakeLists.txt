@@ -1,0 +1,8 @@
+file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp include/*.h)
+add_library(Pool STATIC ${srcs})
+target_include_directories(Pool PUBLIC include)
+find_package(glog REQUIRED)
+target_link_libraries(Pool PUBLIC glog::glog)
+target_link_libraries(Pool PUBLIC Log)
+include_directories(/usr/include/mysql)
+target_link_libraries(Pool PUBLIC mysqlclient)
