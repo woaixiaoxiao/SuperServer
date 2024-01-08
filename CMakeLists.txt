@@ -15,5 +15,6 @@ add_subdirectory(Server)
 add_subdirectory(Pool)
 add_subdirectory(Buffer)
 add_subdirectory(Log)
+add_subdirectory(Http)
 
 add_subdirectory(Test)

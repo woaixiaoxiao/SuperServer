@@ -9,6 +9,7 @@ set(MY_LIBRARIES
     Pool
     Buffer
     Log
+    Http
     glog::glog
     # Serverlib
 )
