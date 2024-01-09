@@ -10,6 +10,7 @@ set(MY_LIBRARIES
     Buffer
     Log
     Http
+    Timer
     glog::glog
     # Serverlib
 )
