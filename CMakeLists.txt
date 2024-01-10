@@ -17,5 +17,8 @@ add_subdirectory(Buffer)
 add_subdirectory(Log)
 add_subdirectory(Http)
 add_subdirectory(Timer)
-
 add_subdirectory(Test)
+# add_subdirectory(Main)
+
+add_executable(myServer main.cpp)
+target_link_libraries(myServer PUBLIC Server)

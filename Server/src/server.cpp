@@ -1,4 +1,5 @@
 #include "Server/server.hpp"
+#include <libgen.h>
 
 using namespace std;
 
@@ -9,6 +10,8 @@ WebServer::WebServer(int port, int trigMode, int timeoutMS, bool OptLinger, int 
       timer_(new HeapTimer()), threadpool_(new ThreadPool(threadNum)), epoller_(new Epoller()) {
     srcDir_ = getcwd(nullptr, 256);
     assert(srcDir_);
+    // 获取上一级目录，当前目录是build目录
+    srcDir_ = dirname(srcDir_);
     printf("%s\n", srcDir_);
     strncat(srcDir_, "/resources/", 16);
     HttpConn::userCount = 0;
