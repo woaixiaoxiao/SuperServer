@@ -17,6 +17,7 @@
 #include "Pool/threadpool.hpp"
 #include "Pool/sqlconnRALL.hpp"
 #include "Http/httpconn.hpp"
+#include "SkipList/newskiplist.hpp"
 
 class WebServer {
 public:

@@ -11,8 +11,9 @@ set(MY_LIBRARIES
     Log
     Http
     Timer
-    glog::glog
     Server
+    SkipList
+    glog::glog
 )
 # 获取所有的需要测试的cpp文件
 file(GLOB_RECURSE BUSTUB_TEST_SOURCES "${PROJECT_SOURCE_DIR}/Test/*/*Test.cpp")

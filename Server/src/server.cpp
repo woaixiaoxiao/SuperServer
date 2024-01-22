@@ -135,6 +135,7 @@ void WebServer::CloseConn_(HttpConn *client) {
 
 // 添加新的客户端
 void WebServer::AddClient_(int fd, sockaddr_in addr) {
+    
     assert(fd > 0);
     users_[fd].init(fd, addr);
     // 一个客户端最长连接时间
@@ -148,6 +149,7 @@ void WebServer::AddClient_(int fd, sockaddr_in addr) {
 
 // 处理新的客户端连接
 void WebServer::DealListen_() {
+    LOG(INFO) << "新的客户端连接";
     struct sockaddr_in addr;
     socklen_t len = sizeof(addr);
     // 如果是边缘触发，就要保证读干净了
@@ -166,6 +168,7 @@ void WebServer::DealListen_() {
 
 // 处理可读事件，分发到线程池
 void WebServer::DealRead_(HttpConn *client) {
+    LOG(INFO) << "客户端有请求";
     assert(client);
     ExtentTime_(client);
     threadpool_->AddTask(std::bind(&WebServer::OnRead_, this, client));
@@ -173,6 +176,7 @@ void WebServer::DealRead_(HttpConn *client) {
 
 // 处理可写事件，分发到线程池
 void WebServer::DealWrite_(HttpConn *client) {
+    LOG(INFO) << "发东西给客户端";
     assert(client);
     ExtentTime_(client);
     threadpool_->AddTask(std::bind(&WebServer::OnWrite_, this, client));

@@ -3,6 +3,7 @@
 #include "Buffer/buffer.hpp"
 #include <fcntl.h> // For open function
 #include <string>
+#include "SkipList/newskiplist.hpp"
 
 TEST(BufferPool_Test, test_buffer) {
     const char *filePath = "example.txt";

@@ -8,7 +8,7 @@
 #include <stdarg.h>
 #include <assert.h>
 #include <sys/stat.h>
-#include "Log/blockqueue.h"
+#include "Log/blockqueue.hpp"
 #include "Buffer/buffer.hpp"
 
 enum class LogLevel : int { DEBUG = 0, INFO, WARN, ERROR };
