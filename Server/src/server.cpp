@@ -22,7 +22,9 @@ WebServer::WebServer(int port, int trigMode, int timeoutMS, bool OptLinger, int 
     if (!InitSocket_()) {
         isClose_ = true;
     }
-
+    // 初始化跳表kv存储
+    kv = std::make_shared<KvStore>();
+    // 日志设置
     if (openLog) {
         Log::Instance()->init(logLevel, "./log", ".log", logQueSize);
         if (isClose_) {
@@ -135,7 +137,7 @@ void WebServer::CloseConn_(HttpConn *client) {
 
 // 添加新的客户端
 void WebServer::AddClient_(int fd, sockaddr_in addr) {
-    
+
     assert(fd > 0);
     users_[fd].init(fd, addr);
     // 一个客户端最长连接时间
@@ -196,6 +198,7 @@ void WebServer::OnRead_(HttpConn *client) {
     int ret = -1;
     int readErrno = 0;
     ret = client->read(&readErrno);
+
     if (ret <= 0 && readErrno != EAGAIN) {
         CloseConn_(client);
         return;

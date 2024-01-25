@@ -5,15 +5,13 @@ const char *HttpConn::srcDir;
 std::atomic<int> HttpConn::userCount;
 bool HttpConn::isET;
 
-HttpConn::HttpConn() {
+HttpConn::HttpConn() : kv(new KvStore()), request_(kv) {
     fd_ = -1;
     addr_ = {0};
     isClose_ = true;
 };
 
-HttpConn::~HttpConn() {
-    Close();
-};
+HttpConn::~HttpConn() { Close(); };
 
 void HttpConn::init(int fd, const sockaddr_in &addr) {
     assert(fd > 0);
@@ -38,21 +36,15 @@ void HttpConn::Close() {
     }
 }
 
-int HttpConn::GetFd() const {
-    return fd_;
-};
+int HttpConn::GetFd() const { return fd_; };
 
 struct sockaddr_in HttpConn::GetAddr() const {
     return addr_;
 }
 
-const char *HttpConn::GetIP() const {
-    return inet_ntoa(addr_.sin_addr);
-}
+const char *HttpConn::GetIP() const { return inet_ntoa(addr_.sin_addr); }
 
-int HttpConn::GetPort() const {
-    return addr_.sin_port;
-}
+int HttpConn::GetPort() const { return addr_.sin_port; }
 
 // 从fd中读取数据到readBuff_
 ssize_t HttpConn::read(int *saveErrno) {
@@ -63,7 +55,7 @@ ssize_t HttpConn::read(int *saveErrno) {
             break;
         }
     } while (isET); // 边缘触发，所以要一直读
-    
+    readBuff_.show();
     return len;
 }
 
@@ -111,18 +103,24 @@ bool HttpConn::process() {
     } else {
         response_.Init(srcDir, request_.path(), false, 400);
     }
-    // 根据已经初始化的response_将http回复写到writeBuff_中
+    // 根据已经初始化的response_将http回复写到writeBuff_中（这个函数因为kv被改了）
     response_.MakeResponse(writeBuff_);
+    // 以下两行kv相关
+    writeBuff_.Append("Content-length: " + to_string(request_.value.size()) + "\r\n\r\n");
+    writeBuff_.Append(request_.value);
+    writeBuff_.Append("\n");
+
+    cout << "value:  " << request_.value << endl;
     // Buffer中只存了报文头部
     iov_[0].iov_base = const_cast<char *>(writeBuff_.Peek());
     iov_[0].iov_len = writeBuff_.ReadableBytes();
     iovCnt_ = 1;
-    // 为了避免文件过大，用了mmap和iov机制
-    if (response_.FileLen() > 0 && response_.File()) {
-        iov_[1].iov_base = response_.File();
-        iov_[1].iov_len = response_.FileLen();
-        iovCnt_ = 2;
-    }
+    // 为了避免文件过大，用了mmap和iov机制（截胡，这里先修改为kv，如果要取消kv存储，则将下面这个if注释取消）
+    // if (response_.FileLen() > 0 && response_.File()) {
+    //     iov_[1].iov_base = response_.File();
+    //     iov_[1].iov_len = response_.FileLen();
+    //     iovCnt_ = 2;
+    // }
     LOG_DEBUG("filesize:%d, %d  to %d", response_.FileLen(), iovCnt_, ToWriteBytes());
     return true;
 }

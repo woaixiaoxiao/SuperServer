@@ -1,6 +1,6 @@
 {
-    "C_Cpp.autocomplete": "disabled",
-    "C_Cpp.intelliSenseEngine": "disabled",
+    "C_Cpp.autocomplete": "default",
+    "C_Cpp.intelliSenseEngine": "default",
     "files.associations": {
         "any": "cpp",
         "array": "cpp",
@@ -64,5 +64,6 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "codecvt": "cpp"
-    }
+    },
+    "C_Cpp.inlayHints.parameterNames.enabled": true
 }

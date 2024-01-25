@@ -4,9 +4,7 @@
 #include "Http/httpconn.hpp"
 
 TEST(Httprequest_Test, test_basic) {
-    HttpRequest hr;
-}
-
-TEST(Httprequest_Test, test_conn) {
     HttpConn hc;
+    hc.kv->print();
+    hc.kv->set("1", "2");
 }

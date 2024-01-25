@@ -1,0 +1,102 @@
+[
+{
+  "directory": "/home/dcao/webserver/myServer/build",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/myServer.dir/main.cpp.o -c /home/dcao/webserver/myServer/main.cpp",
+  "file": "/home/dcao/webserver/myServer/main.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Server",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/Server.dir/src/epoller.cpp.o -c /home/dcao/webserver/myServer/Server/src/epoller.cpp",
+  "file": "/home/dcao/webserver/myServer/Server/src/epoller.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Server",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/Server.dir/src/server.cpp.o -c /home/dcao/webserver/myServer/Server/src/server.cpp",
+  "file": "/home/dcao/webserver/myServer/Server/src/server.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Pool",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Pool/include -I/usr/include/mysql -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -g -std=c++2a -o CMakeFiles/Pool.dir/src/sqlconnpool.cpp.o -c /home/dcao/webserver/myServer/Pool/src/sqlconnpool.cpp",
+  "file": "/home/dcao/webserver/myServer/Pool/src/sqlconnpool.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Pool",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Pool/include -I/usr/include/mysql -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -g -std=c++2a -o CMakeFiles/Pool.dir/src/threadpool.cpp.o -c /home/dcao/webserver/myServer/Pool/src/threadpool.cpp",
+  "file": "/home/dcao/webserver/myServer/Pool/src/threadpool.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Buffer",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Buffer/include -g -std=c++2a -o CMakeFiles/Buffer.dir/src/buffer.cpp.o -c /home/dcao/webserver/myServer/Buffer/src/buffer.cpp",
+  "file": "/home/dcao/webserver/myServer/Buffer/src/buffer.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Log",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -g -std=c++2a -o CMakeFiles/Log.dir/src/log.cpp.o -c /home/dcao/webserver/myServer/Log/src/log.cpp",
+  "file": "/home/dcao/webserver/myServer/Log/src/log.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Http",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Pool/include -g -std=c++2a -o CMakeFiles/Http.dir/src/httpconn.cpp.o -c /home/dcao/webserver/myServer/Http/src/httpconn.cpp",
+  "file": "/home/dcao/webserver/myServer/Http/src/httpconn.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Http",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Pool/include -g -std=c++2a -o CMakeFiles/Http.dir/src/httprequest.cpp.o -c /home/dcao/webserver/myServer/Http/src/httprequest.cpp",
+  "file": "/home/dcao/webserver/myServer/Http/src/httprequest.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Http",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Pool/include -g -std=c++2a -o CMakeFiles/Http.dir/src/httpresponse.cpp.o -c /home/dcao/webserver/myServer/Http/src/httpresponse.cpp",
+  "file": "/home/dcao/webserver/myServer/Http/src/httpresponse.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Timer",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -g -std=c++2a -o CMakeFiles/Timer.dir/src/heaptimer.cpp.o -c /home/dcao/webserver/myServer/Timer/src/heaptimer.cpp",
+  "file": "/home/dcao/webserver/myServer/Timer/src/heaptimer.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Test",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/Buffer_Test.dir/Buffer_Test/Buffer_Test.cpp.o -c /home/dcao/webserver/myServer/Test/Buffer_Test/Buffer_Test.cpp",
+  "file": "/home/dcao/webserver/myServer/Test/Buffer_Test/Buffer_Test.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Test",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/Httprequest_Test.dir/Http_Test/Httprequest_Test.cpp.o -c /home/dcao/webserver/myServer/Test/Http_Test/Httprequest_Test.cpp",
+  "file": "/home/dcao/webserver/myServer/Test/Http_Test/Httprequest_Test.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Test",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/Log_Test.dir/Log_Test/Log_Test.cpp.o -c /home/dcao/webserver/myServer/Test/Log_Test/Log_Test.cpp",
+  "file": "/home/dcao/webserver/myServer/Test/Log_Test/Log_Test.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Test",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/Server_Test.dir/Server_Test/Server_Test.cpp.o -c /home/dcao/webserver/myServer/Test/Server_Test/Server_Test.cpp",
+  "file": "/home/dcao/webserver/myServer/Test/Server_Test/Server_Test.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Test",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/SkipList_Test.dir/SkipList_Test/SkipList_Test.cpp.o -c /home/dcao/webserver/myServer/Test/SkipList_Test/SkipList_Test.cpp",
+  "file": "/home/dcao/webserver/myServer/Test/SkipList_Test/SkipList_Test.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Test",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/SqlConnPool_Test.dir/Thread_Test/SqlConnPool_Test.cpp.o -c /home/dcao/webserver/myServer/Test/Thread_Test/SqlConnPool_Test.cpp",
+  "file": "/home/dcao/webserver/myServer/Test/Thread_Test/SqlConnPool_Test.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Test",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/ThreadPool_Test.dir/Thread_Test/ThreadPool_Test.cpp.o -c /home/dcao/webserver/myServer/Test/Thread_Test/ThreadPool_Test.cpp",
+  "file": "/home/dcao/webserver/myServer/Test/Thread_Test/ThreadPool_Test.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/Test",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/Pool/include -I/home/dcao/webserver/myServer/Log/include -I/home/dcao/webserver/myServer/Buffer/include -I/home/dcao/webserver/myServer/Http/include -I/home/dcao/webserver/myServer/Timer/include -I/home/dcao/webserver/myServer/Server/include -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/HeapTimer_Test.dir/Timer_Test/HeapTimer_Test.cpp.o -c /home/dcao/webserver/myServer/Test/Timer_Test/HeapTimer_Test.cpp",
+  "file": "/home/dcao/webserver/myServer/Test/Timer_Test/HeapTimer_Test.cpp"
+},
+{
+  "directory": "/home/dcao/webserver/myServer/build/SkipList",
+  "command": "/usr/bin/g++ -DGLOG_USE_GLOG_EXPORT -I/home/dcao/webserver/myServer/SkipList/include -g -std=c++2a -o CMakeFiles/SkipList.dir/src/kvstore.cpp.o -c /home/dcao/webserver/myServer/SkipList/src/kvstore.cpp",
+  "file": "/home/dcao/webserver/myServer/SkipList/src/kvstore.cpp"
+}
+]

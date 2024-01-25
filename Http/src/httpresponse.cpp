@@ -45,9 +45,7 @@ HttpResponse::HttpResponse() {
     mmFileStat_ = {0};
 };
 
-HttpResponse::~HttpResponse() {
-    UnmapFile();
-}
+HttpResponse::~HttpResponse() { UnmapFile(); }
 
 // 初始化各种信息，主要是secDir和path，代表了这次回复对应的请求的路径
 void HttpResponse::Init(const string &srcDir, string &path, bool isKeepAlive, int code) {
@@ -79,13 +77,9 @@ void HttpResponse::MakeResponse(Buffer &buff) {
     AddContent_(buff);
 }
 
-char *HttpResponse::File() {
-    return mmFile_;
-}
+char *HttpResponse::File() { return mmFile_; }
 
-size_t HttpResponse::FileLen() const {
-    return mmFileStat_.st_size;
-}
+size_t HttpResponse::FileLen() const { return mmFileStat_.st_size; }
 
 // 根据错误码生成错误页面的地址
 void HttpResponse::ErrorHtml_() {
@@ -110,6 +104,7 @@ void HttpResponse::AddStateLine_(Buffer &buff) {
 // 添加头部
 void HttpResponse::AddHeader_(Buffer &buff) {
     buff.Append("Connection: ");
+    
     if (isKeepAlive_) {
         buff.Append("keep-alive\r\n");
         buff.Append("keep-alive: max=6, timeout=120\r\n");
@@ -135,9 +130,11 @@ void HttpResponse::AddContent_(Buffer &buff) {
         ErrorContent(buff, "File NotFound!");
         return;
     }
+    // 截胡，如果要取消kv存储，将下面两行注释取消
     mmFile_ = (char *)mmRet;
     close(srcFd);
-    buff.Append("Content-length: " + to_string(mmFileStat_.st_size) + "\r\n\r\n");
+    // buff.Append("Content-length: " + to_string(mmFileStat_.st_size) + "\r\n\r\n");
+    // buff.Append("Content-length: " + to_string(5) + "\r\n\r\n");
 }
 
 void HttpResponse::UnmapFile() {

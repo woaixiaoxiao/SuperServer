@@ -7,11 +7,13 @@
 #include <regex>
 #include <errno.h>
 #include <mysql/mysql.h>
+#include <iostream>
 
 #include "Buffer/buffer.hpp"
 #include "Log/log.hpp"
 #include "Pool/sqlconnpool.hpp"
 #include "Pool/sqlconnRALL.hpp"
+#include "SkipList/kvstore.hpp"
 
 class HttpRequest {
 public:
@@ -33,9 +35,7 @@ public:
         CLOSED_CONNECTION,
     };
 
-    HttpRequest() {
-        Init();
-    }
+    HttpRequest(std::shared_ptr<KvStore> kv) : kv_req(kv) { Init(); }
     ~HttpRequest() = default;
 
     void Init();
@@ -49,6 +49,11 @@ public:
     std::string GetPost(const char *key) const;
 
     bool IsKeepAlive() const;
+
+    void ParseKv();
+    std::vector<std::string> kvOp;
+    std::shared_ptr<KvStore> kv_req;
+    std::string value;
 
     /* 
     todo 

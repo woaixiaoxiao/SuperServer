@@ -17,7 +17,7 @@
 #include "Pool/threadpool.hpp"
 #include "Pool/sqlconnRALL.hpp"
 #include "Http/httpconn.hpp"
-#include "SkipList/newskiplist.hpp"
+#include "SkipList/kvstore.hpp"
 
 class WebServer {
 public:
@@ -63,6 +63,7 @@ private:
     std::unique_ptr<ThreadPool> threadpool_;
     std::unique_ptr<Epoller> epoller_;
     std::unordered_map<int, HttpConn> users_;
+    std::shared_ptr<KvStore> kv;
 };
 
 #endif

@@ -1,23 +1,14 @@
 #include "Buffer/buffer.hpp"
 
-Buffer::Buffer(int initBuffSize) : buffer_(initBuffSize), readPos_(0), writePos_(0) {
-}
+Buffer::Buffer(int initBuffSize) : buffer_(initBuffSize), readPos_(0), writePos_(0) {}
 
-size_t Buffer::ReadableBytes() const {
-    return writePos_ - readPos_;
-}
-size_t Buffer::WritableBytes() const {
-    return buffer_.size() - writePos_;
-}
+size_t Buffer::ReadableBytes() const { return writePos_ - readPos_; }
+size_t Buffer::WritableBytes() const { return buffer_.size() - writePos_; }
 
-size_t Buffer::PrependableBytes() const {
-    return readPos_;
-}
+size_t Buffer::PrependableBytes() const { return readPos_; }
 
 // 指向未读取位置的指针，即通过char*+len得到指针
-const char *Buffer::Peek() const {
-    return BeginPtr_() + readPos_;
-}
+const char *Buffer::Peek() const { return BeginPtr_() + readPos_; }
 
 // 标记读出len字节的数据
 void Buffer::Retrieve(size_t len) {
@@ -46,24 +37,16 @@ std::string Buffer::RetrieveAllToStr() {
 }
 
 // 获取写指针（常量指针）
-const char *Buffer::BeginWriteConst() const {
-    return BeginPtr_() + writePos_;
-}
+const char *Buffer::BeginWriteConst() const { return BeginPtr_() + writePos_; }
 
 // 获取写指针（普通指针）
-char *Buffer::BeginWrite() {
-    return BeginPtr_() + writePos_;
-}
+char *Buffer::BeginWrite() { return BeginPtr_() + writePos_; }
 
 // 更新写指针的下标
-void Buffer::HasWritten(size_t len) {
-    writePos_ += len;
-}
+void Buffer::HasWritten(size_t len) { writePos_ += len; }
 
 // 写入字符串到缓冲区（std::string形式）
-void Buffer::Append(const std::string &str) {
-    Append(str.data(), str.length());
-}
+void Buffer::Append(const std::string &str) { Append(str.data(), str.length()); }
 
 // 写入字符串到缓冲区（void*形式）
 void Buffer::Append(const void *data, size_t len) {
@@ -80,9 +63,7 @@ void Buffer::Append(const char *str, size_t len) {
 }
 
 // 讲一个Buffer类添加到当前Buffer
-void Buffer::Append(const Buffer &buff) {
-    Append(buff.Peek(), buff.ReadableBytes());
-}
+void Buffer::Append(const Buffer &buff) { Append(buff.Peek(), buff.ReadableBytes()); }
 
 // 确保能写这么多个字节，不够的话就扩展空间
 void Buffer::EnsureWriteable(size_t len) {
@@ -118,6 +99,15 @@ ssize_t Buffer::ReadFd(int fd, int *saveErrno) {
     return len;
 }
 
+void Buffer::show() {
+    printf("--------------show begin=---------\n");
+    for (int i = readPos_; i < writePos_; i++) {
+        printf("%c", buffer_[i]);
+    }
+    printf("\n");
+    printf("--------------show end=---------\n");
+}
+
 ssize_t Buffer::WriteFd(int fd, int *saveErrno) {
     size_t readSize = ReadableBytes();
     ssize_t len = write(fd, Peek(), readSize);
@@ -130,14 +120,10 @@ ssize_t Buffer::WriteFd(int fd, int *saveErrno) {
 }
 
 // 返回缓冲区的起始位置
-char *Buffer::BeginPtr_() {
-    return &*buffer_.begin();
-}
+char *Buffer::BeginPtr_() { return &*buffer_.begin(); }
 
 // 返回缓冲区的起始位置（常量版）
-const char *Buffer::BeginPtr_() const {
-    return &*buffer_.begin();
-}
+const char *Buffer::BeginPtr_() const { return &*buffer_.begin(); }
 
 // 扩展空间，要么是调整读写指针，要么是直接给vector扩容
 void Buffer::MakeSpace_(size_t len) {

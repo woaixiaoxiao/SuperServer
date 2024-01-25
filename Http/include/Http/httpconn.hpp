@@ -2,15 +2,16 @@
 #define HTTP_CONN_H
 
 #include <sys/types.h>
-#include <sys/uio.h>  
+#include <sys/uio.h>
 #include <arpa/inet.h>
-#include <errno.h>      
+#include <errno.h>
 
 #include "Log/log.hpp"
 #include "Pool/sqlconnRALL.hpp"
 #include "Buffer/buffer.hpp"
 #include "Http/httprequest.hpp"
 #include "Http/httpresponse.hpp"
+#include "SkipList/kvstore.hpp"
 
 /*
 使用逻辑
@@ -26,11 +27,11 @@ public:
 
     ~HttpConn();
 
-    void init(int sockFd, const sockaddr_in& addr);
+    void init(int sockFd, const sockaddr_in &addr);
 
-    ssize_t read(int* saveErrno);
+    ssize_t read(int *saveErrno);
 
-    ssize_t write(int* saveErrno);
+    ssize_t write(int *saveErrno);
 
     void Close();
 
@@ -38,40 +39,35 @@ public:
 
     int GetPort() const;
 
-    const char* GetIP() const;
-    
+    const char *GetIP() const;
+
     sockaddr_in GetAddr() const;
-    
+
     bool process();
 
-    int ToWriteBytes() { 
-        return iov_[0].iov_len + iov_[1].iov_len; 
-    }
+    int ToWriteBytes() { return iov_[0].iov_len + iov_[1].iov_len; }
 
-    bool IsKeepAlive() const {
-        return request_.IsKeepAlive();
-    }
+    bool IsKeepAlive() const { return request_.IsKeepAlive(); }
 
     static bool isET;
-    static const char* srcDir;
+    static const char *srcDir;
     static std::atomic<int> userCount;
-    
+    std::shared_ptr<KvStore> kv;
+
 private:
-   
     int fd_;
-    struct  sockaddr_in addr_;
+    struct sockaddr_in addr_;
 
     bool isClose_;
-    
+
     int iovCnt_;
     struct iovec iov_[2];
-    
-    Buffer readBuff_; // 读缓冲区
+
+    Buffer readBuff_;  // 读缓冲区
     Buffer writeBuff_; // 写缓冲区
 
     HttpRequest request_;
     HttpResponse response_;
 };
-
 
 #endif //HTTP_CONN_H

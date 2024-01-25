@@ -1,4 +1,5 @@
 #include "Http/httprequest.hpp"
+#include <sstream>
 using namespace std;
 
 const unordered_set<string> HttpRequest::DEFAULT_HTML{
@@ -102,10 +103,31 @@ void HttpRequest::ParseHeader_(const string &line) {
     }
 }
 
+void HttpRequest::ParseKv() {
+    stringstream ss;
+    ss << body_;
+    std::string temp;
+    while (ss >> temp) {
+        kvOp.push_back(temp);
+    }
+    if (kvOp[0] == "set") {
+        kv_req->set(kvOp[1], kvOp[2]);
+        value = "OK";
+    } else if (kvOp[0] == "del") {
+        kv_req->del(kvOp[1]);
+        value = "OK";
+    } else if (kvOp[0] == "get") {
+        value = kv_req->get(kvOp[1]);
+    }
+    kvOp.clear();
+}
+
 // 解析请求内容
 void HttpRequest::ParseBody_(const string &line) {
     body_ = line;
+    // cout << "body: " << body_ << endl;
     ParsePost_();
+    ParseKv();
     state_ = FINISH;
     LOG_DEBUG("Body:%s, len:%d", line.c_str(), line.size());
 }
@@ -122,6 +144,7 @@ int HttpRequest::ConverHex(char ch) {
 // 解析具体的请求部分，这里就是一个登录和注册的逻辑
 void HttpRequest::ParsePost_() {
     if (method_ == "POST" && header_["Content-Type"] == "application/x-www-form-urlencoded") {
+
         ParseFromUrlencoded_();
         if (DEFAULT_HTML_TAG.count(path_)) {
             int tag = DEFAULT_HTML_TAG.find(path_)->second;
@@ -264,20 +287,12 @@ bool HttpRequest::UserVerify(const string &name, const string &pwd, bool isLogin
     return flag;
 }
 
-std::string HttpRequest::path() const {
-    return path_;
-}
+std::string HttpRequest::path() const { return path_; }
 
-std::string &HttpRequest::path() {
-    return path_;
-}
-std::string HttpRequest::method() const {
-    return method_;
-}
+std::string &HttpRequest::path() { return path_; }
+std::string HttpRequest::method() const { return method_; }
 
-std::string HttpRequest::version() const {
-    return version_;
-}
+std::string HttpRequest::version() const { return version_; }
 
 // 根据key得到请求头的value
 std::string HttpRequest::GetPost(const std::string &key) const {

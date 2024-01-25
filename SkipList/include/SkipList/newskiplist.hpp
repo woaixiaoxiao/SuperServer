@@ -51,6 +51,7 @@ public:
     void display_list();
     bool search_element(K);
     void delete_element(K);
+    V get_element(K);
     void dump_file();
     void load_file();
     int size();
@@ -333,6 +334,24 @@ bool SkipList<K, V>::search_element(K key) {
 
     std::cout << "Not Found Key:" << key << std::endl;
     return false;
+}
+
+template <typename K, typename V>
+V SkipList<K, V>::get_element(K key) {
+    std::lock_guard<std::mutex> lgmtx(mtx);
+    std::shared_ptr<Node<K, V>> current = _header;
+    for (int i = _skip_list_level; i >= 0; i--) {
+        while (current->forward[i] && current->forward[i]->get_key() < key) {
+            current = current->forward[i];
+        }
+    }
+    //reached level 0 and advance pointer to right Node2, which we search
+    current = current->forward[0];
+    // if current Node2 have key equal to searched key, we get it
+    if (current and current->get_key() == key) {
+        return current->get_value();
+    }
+    return std::string{"None"};
 }
 
 #endif

@@ -41,6 +41,8 @@ public:
     ssize_t ReadFd(int fd, int* Errno);
     ssize_t WriteFd(int fd, int* Errno);
 
+    void show();
+
 private:
     char* BeginPtr_();
     const char* BeginPtr_() const;
